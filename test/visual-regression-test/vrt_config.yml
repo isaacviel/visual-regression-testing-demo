@@ -1,0 +1,19 @@
+# Location where screenshots are created
+imgLocations: test/visual-regression-test/
+
+# Width in pixels of browser 
+screenWidth: 1366
+
+# Environment to be tested
+testEnv: https://master-stage.developers.arcgis.com
+
+# Known environment to tested against
+baseEnv: https://developers.arcgis.com
+
+# Page URIs to be tests in each environment
+pagesToTest:
+  home: /
+  documentation: /documentation/
+  tutorials: /labs/
+  pricing: /pricing/
+  python: /python/

@@ -7,7 +7,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "vrt": "node test/visual-regression-test/vrt.js"
   },
   "private": true,
   "dependencies": {
@@ -19,7 +20,10 @@
     "@angular/platform-browser": "~9.0.0",
     "@angular/platform-browser-dynamic": "~9.0.0",
     "@angular/router": "~9.0.0",
+    "chromedriver": "^79.0.0",
+    "looks-same": "^7.2.2",
     "rxjs": "~6.5.4",
+    "selenium-webdriver": "^3.0.16",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
   },
@@ -39,6 +43,7 @@
     "karma-coverage-istanbul-reporter": "~2.1.0",
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "^1.4.2",
+    "prompts": "^1.2.1",
     "protractor": "~5.4.3",
     "ts-node": "~8.3.0",
     "tslint": "~5.18.0",
