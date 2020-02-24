@@ -1,0 +1,17 @@
+{		
+     "cSpell.words": [		
+         "Uncheck",		
+         "arcgis",		
+         "datefmt",		
+         "envs",		
+         "getenv",		
+         "iframe",		
+         "ngcontent",		
+         "userield"		
+     ],		
+     "python.autoComplete.extraPaths": [		
+         "tests/modules/webdriver.py",		
+         "tests/modules/rest.py"		
+     ]		
+
+} 
