@@ -1,6 +1,11 @@
 /* import the required JSAPI css */
 @import url("https://js.arcgis.com/4.12/esri/css/main.css");
 
+:host {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+}
+
 .esri-view {
-  height: 500px;
 }

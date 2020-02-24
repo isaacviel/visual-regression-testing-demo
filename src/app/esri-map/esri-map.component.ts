@@ -37,8 +37,8 @@ export class EsriMapComponent implements OnInit, OnDestroy {
   @ViewChild("mapViewNode", { static: true }) private mapViewEl: ElementRef;
 
   private _zoom = 10;
-  private _center: Array<number> = [0.1278, 51.5074];
-  private _basemap = "streets";
+  private _center: Array<number> = [-12972840.433435235, 4005469.147696632];
+  private _basemap = "streets-night-vector";
   private _loaded = false;
   private _view: esri.MapView = null;
 
