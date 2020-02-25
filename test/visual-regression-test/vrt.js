@@ -237,9 +237,6 @@ function getScreenShots(
   // gets the base environment and page
   driver.get(baseEnvironment);
 
-  // set a cookie on the current domain
-  driver.manage().addCookie({ name: "esri_gdpr", value: "true" });
-
   // gets the base environment and page
   driver.get(baseEnvironment + pageURL);
 
