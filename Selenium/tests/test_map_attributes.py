@@ -39,7 +39,7 @@ class Test(TestCase):
         # Create empty list for error messages
         self.verificationErrors = []
 
-    def test_page_title(self):
+    def test_map_attributes(self):
     
         driver = self.driver
         driver.set_window_size(1366, 900)
@@ -47,18 +47,35 @@ class Test(TestCase):
         # Navigate browser to layers page
         driver.get('http://host.docker.internal:4200')
 
-        page_title = driver.title
 
-        print(page_title)
+        map_center = WebDriverWait(driver, 90).until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, 'app-esri-map')))
+        map_center_val = map_center.get_attribute("ng-reflect-center")
 
+        # Check that checkbox is not checked after save
+        try:
+            self.assertEqual(map_center_val, '-122.4194,37.7749')
+        except AssertionError as e:
+            self.verificationErrors.append('Test 1 failed: ' + str(e))
 
+        map_zoom = WebDriverWait(driver, 90).until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, 'app-esri-map')))
+        map_zoom_val = map_zoom.get_attribute("ng-reflect-zoom")
 
+        # Check that checkbox is not checked after save
+        try:
+            self.assertEqual(map_zoom_val, '12')
+        except AssertionError as e:
+            self.verificationErrors.append('Test 2 failed: ' + str(e))
 
-        # # Check that checkbox is not checked after save
-        # try:
-        #     self.assertFalse(editing_check_box.is_selected())
-        # except AssertionError as e:
-        #     self.verificationErrors.append('Test 2 failed: ' + str(e))
+        map_attribution = WebDriverWait(driver, 90).until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, '.esri-attribution__sources.esri-interactive')))
+
+        # Check that checkbox is not checked after save
+        try:
+            self.assertEqual(map_attribution.text, 'USDA FSA, Earthstar Geographics')
+        except AssertionError as e:
+            self.verificationErrors.append('Test 3 failed: ' + str(e))
 
     def tearDown(self):
         # Quit driver
