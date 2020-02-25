@@ -41,6 +41,10 @@ yarn-error.log
 testem.log
 /typings
 *.sh
+*-base.png
+*-test.png
+*-diff.png
+
 
 
 # System Files
