@@ -24,10 +24,29 @@ pipeline {
     }
 
     stage('stop') {
+
       steps {
-        echo "stopping any running ${vrtName}"
-        script {
-          sh "docker stop ${vrtName} && docker rm ${vrtName}"
+        catchError {
+          echo "stopping any running ${vrtName}"
+          script {
+              sh """
+                docker ps -a \
+                | awk '{ print \$1,\$2 }' \
+                | grep ${vrtName} \
+                | awk '{print \$1 }' \
+                | xargs -I {} docker stop {}
+                """
+            }
+            echo "stopping any running ${vrtName}"
+          script {
+              sh """
+                docker ps -a \
+                | awk '{ print \$1,\$2 }' \
+                | grep ${vrtName} \
+                | awk '{print \$1 }' \
+                | xargs -I {} docker rm {} || 
+                """
+          }
         }
       }
     }
