@@ -44,7 +44,7 @@ pipeline {
                 | awk '{ print \$1,\$2 }' \
                 | grep ${vrtName} \
                 | awk '{print \$1 }' \
-                | xargs -I {} docker rm {} || 
+                | xargs -I {} docker rm {}
                 """
           }
         }
