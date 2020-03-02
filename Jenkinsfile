@@ -5,7 +5,7 @@ def imageName = 'vrt'
 def vrtImage = ''
 def vrtName = 'vrtDemo'
 def imageOptions = "-e 8043  --hostname ${vrtName} --network traefik --name vrtDemo"
-def traefikOptions = '-l traefik.enable="true" -l traefik.http.routers.vrt.entrypoints="web" -l traefik.http.services.vrt.server.port="8043" -l traefik.http.routers.vrt.rule="Host(\\`agent.local\\`)"'
+def traefikOptions = '-l traefik.enable="true" -l traefik.http.routers.vrt.entrypoints="web" -l traefik.http.services.vrt.loadbalancer.server.port="8043" -l traefik.http.routers.vrt.rule="Host(\\`agent.local\\`)"'
 
 pipeline {
 
