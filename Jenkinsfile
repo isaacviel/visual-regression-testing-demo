@@ -23,7 +23,7 @@ pipeline {
       steps {
           echo "going to run docker image phase"
           script {
-              vrtImage.run("-p 4200:4200")
+              vrtImage.run("-p 4200:8043")
             }
 
       }
