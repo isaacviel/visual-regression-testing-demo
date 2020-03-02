@@ -25,6 +25,7 @@ pipeline {
               vrtImage.run("-p 4200:4200")
             }
 
+      }
 
     }
 	}
