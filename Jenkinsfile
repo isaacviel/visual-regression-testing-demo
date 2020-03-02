@@ -2,6 +2,7 @@
 
 def agentLabel = 'afdAgent'
 def imageName = 'vrt'
+def vrtImage = ''
 
 pipeline {
 
@@ -13,7 +14,7 @@ pipeline {
         steps {
           echo "going to docker build phase"
           script {
-            def vrtImage = docker.build("${imageName}:${env.BUILD_ID}")
+              vrtImage = docker.build("${imageName}:${env.BUILD_ID}")
           }
         }
     }
