@@ -31,7 +31,7 @@ pipeline {
           script {
               sh """
                 docker ps -a \
-                | awk '{ print \$1,\$2 }' \
+                | awk '{ print \$NF }' \
                 | grep ${vrtName} \
                 | awk '{print \$1 }' \
                 | xargs -I {} docker stop {}
@@ -41,7 +41,7 @@ pipeline {
           script {
               sh """
                 docker ps -a \
-                | awk '{ print \$1,\$2 }' \
+                | awk '{ print \$NF }' \
                 | grep ${vrtName} \
                 | awk '{print \$1 }' \
                 | xargs -I {} docker rm {}
