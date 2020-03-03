@@ -148,8 +148,6 @@ if (cmdArg === "single-page") {
         message: "What environment would you like to test?",
         choices: [
           { title: "local", value: "http://localhost:4200" },
-          { title: "Dev", value: "https://master-dev.developers.arcgis.com" },
-          { title: "QA", value: "https://master-stage.developers.arcgis.com" },
           { title: "Production", value: "https://developers.arcgis.com" }
         ]
       })).value;
@@ -163,9 +161,7 @@ if (cmdArg === "single-page") {
         message: "What environment would you like to test against?",
         choices: [
           { title: "local", value: "http://localhost:4200" },
-          { title: "Dev", value: "https://master-dev.developers.arcgis.com" },
-          { title: "QA", value: "https://master-stage.developers.arcgis.com" },
-          { title: "Production", value: "https://developers.arcgis.com" }
+          { title: "Production", value: "http://vrt.afd.geocloud.com/" }
         ]
       })).value;
 
