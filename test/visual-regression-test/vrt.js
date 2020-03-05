@@ -148,9 +148,7 @@ if (cmdArg === "single-page") {
         message: "What environment would you like to test?",
         choices: [
           { title: "local", value: "http://localhost:4200" },
-          { title: "Dev", value: "https://master-dev.developers.arcgis.com" },
-          { title: "QA", value: "https://master-stage.developers.arcgis.com" },
-          { title: "Production", value: "https://developers.arcgis.com" }
+          { title: "Production", value: "http://vrt.afd.geocloud.com" }
         ]
       })).value;
 
@@ -163,9 +161,7 @@ if (cmdArg === "single-page") {
         message: "What environment would you like to test against?",
         choices: [
           { title: "local", value: "http://localhost:4200" },
-          { title: "Dev", value: "https://master-dev.developers.arcgis.com" },
-          { title: "QA", value: "https://master-stage.developers.arcgis.com" },
-          { title: "Production", value: "https://developers.arcgis.com" }
+          { title: "Production", value: "http://vrt.afd.geocloud.com" }
         ]
       })).value;
 
@@ -276,6 +272,7 @@ function getScreenShots(
 // compare screenshots and look for a diff. If a diff is found call
 // genDiffImage function to generate an new diff image
 async function diff(baseImgName, testImgName, pageName) {
+
   looksSame(baseImgName, testImgName, { tolerance: 1 }, function(
     error,
     results
@@ -298,13 +295,20 @@ async function diff(baseImgName, testImgName, pageName) {
 
 // generate an new diff image by comparing screenshots
 async function genDiffImage(baseImgName, testImgName, pageName) {
+
+    if (pageName === "/") {
+      var diffName = imgLocations + "home-diff.png"
+    } else {
+      var diffName = imgLocations + "-diff.png"
+    }
+
   looksSame.createDiff(
     {
       reference: baseImgName,
       current: testImgName,
-      diff: imgLocations + pageName.replace(/\//g, "") + "-diff.png",
+      diff: diffName,
       highlightColor: "#ff00ff", // color to highlight the differences
-      strict: false, // strict comparsion
+      strict: false, // strict comparison
       tolerance: 1,
       antialiasingTolerance: 0,
       ignoreAntialiasing: true, // ignore antialising by default
