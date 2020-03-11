@@ -9,9 +9,9 @@ export class AppComponent {
   title = "vrt-demo";
 
   // Set our map properties
-  mapCenter = [-116.5403, 33.8258];
-  basemapType = "streets-vector";
-  mapZoomLevel = 16;
+  mapCenter = [-118.2095, 33.8935];
+  basemapType = "dark-gray-vector";
+  mapZoomLevel = 9;
 
   // See app.component.html
   mapLoadedEvent(status: boolean) {

@@ -10,6 +10,49 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 */
+import esriConfig from "esri/config";
+
+const DEFAULT_WORKER_URL = "https://js.arcgis.com/4.12/";
+const DEFAULT_LOADER_URL = `${DEFAULT_WORKER_URL}dojo/dojo-lite.js`;
+
+esriConfig.workers.loaderUrl = DEFAULT_LOADER_URL;
+esriConfig.workers.loaderConfig = {
+  baseUrl: `${DEFAULT_WORKER_URL}dojo`,
+  packages: [
+    { name: "esri", location: `${DEFAULT_WORKER_URL}esri` },
+    { name: "dojo", location: `${DEFAULT_WORKER_URL}dojo` },
+    { name: "dojox", location: `${DEFAULT_WORKER_URL}dojox` },
+    { name: "dstore", location: `${DEFAULT_WORKER_URL}dstore` },
+    { name: "moment", location: `${DEFAULT_WORKER_URL}moment` },
+    { name: "@dojo", location: `${DEFAULT_WORKER_URL}@dojo` },
+    {
+      name: "cldrjs",
+      location: `${DEFAULT_WORKER_URL}cldrjs`,
+      main: "dist/cldr"
+    },
+    {
+      name: "globalize",
+      location: `${DEFAULT_WORKER_URL}globalize`,
+      main: "dist/globalize"
+    },
+    {
+      name: "maquette",
+      location: `${DEFAULT_WORKER_URL}maquette`,
+      main: "dist/maquette.umd"
+    },
+    {
+      name: "maquette-css-transitions",
+      location: `${DEFAULT_WORKER_URL}maquette-css-transitions`,
+      main: "dist/maquette-css-transitions.umd"
+    },
+    {
+      name: "maquette-jsx",
+      location: `${DEFAULT_WORKER_URL}maquette-jsx`,
+      main: "dist/maquette-jsx.umd"
+    },
+    { name: "tslib", location: `${DEFAULT_WORKER_URL}tslib`, main: "tslib" }
+  ]
+};
 
 import {
   Component,
@@ -24,6 +67,7 @@ import {
 import esri = __esri; // Esri TypeScript Types
 import Map from "esri/Map";
 import MapView from "esri/views/MapView";
+import FeatureLayer from "esri/layers/FeatureLayer";
 
 @Component({
   selector: "app-esri-map",
@@ -83,6 +127,12 @@ export class EsriMapComponent implements OnInit, OnDestroy {
 
     const map = new Map(mapProperties);
 
+    const locationsLayer = new FeatureLayer({
+      url:
+        "https://services.arcgis.com/V6ZHFr6zdgNZuVG0/arcgis/rest/services/USA_Zip_Codes/FeatureServer/0"
+    });
+    map.layers.add(locationsLayer);
+
     // Initialize the MapView
     const mapViewProperties: esri.MapViewProperties = {
       container: this.mapViewEl.nativeElement,
@@ -92,7 +142,6 @@ export class EsriMapComponent implements OnInit, OnDestroy {
     };
 
     this._view = new MapView(mapViewProperties);
-
     // wait for the map to load
     await this._view.when();
     return this._view;

@@ -8,24 +8,47 @@
 }
 
 section {
+  max-height: 100vh;
+  overflow-y: scroll;
+
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
     Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 
-  background-color: #eaeaea;
+  background-color: #444;
+  color: #fff;
 }
 
-article {
-  display: block;
+figure {
+  display: grid;
+  grid-template-columns: 150px 1fr;
 
-  padding: 1.33rem;
-
-  border-bottom: 1px solid #060606;
+  border-bottom: 1px solid #eaeaea;
 }
 
-h3 {
+img {
+  display: inline-block;
+  height: auto;
+  max-width: 150px;
+  object-fit: fill;
+  object-position: center;
+}
+
+figcaption {
+  padding: 1rem;
+
+  font-size: 1rem;
+}
+
+h4 {
   display: block;
   margin-bottom: 0.66rem;
 
-  font-size: 1.66rem;
+  font-size: 1.33rem;
   font-weight: 500;
+}
+
+cite {
+  display: block;
+
+  font-family: monospace;
 }
