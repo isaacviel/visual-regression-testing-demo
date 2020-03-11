@@ -26,10 +26,10 @@ figure {
 }
 
 img {
-  display: inline-block;
   height: auto;
   max-width: 150px;
-  object-fit: fill;
+  min-height: 100%;
+  object-fit: cover;
   object-position: center;
 }
 
