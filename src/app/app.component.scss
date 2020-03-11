@@ -22,7 +22,7 @@ figure {
   display: grid;
   grid-template-columns: 150px 1fr;
 
-  border-bottom: 1px solid #eaeaea;
+  border: 1px solid #eaeaea;
 }
 
 img {
@@ -43,6 +43,7 @@ h4 {
   display: block;
   margin-bottom: 0.66rem;
 
+  font-family: monospace;
   font-size: 1.33rem;
   font-weight: 500;
 }
@@ -50,5 +51,5 @@ h4 {
 cite {
   display: block;
 
-  font-family: monospace;
+  font-family: fantasy;
 }
