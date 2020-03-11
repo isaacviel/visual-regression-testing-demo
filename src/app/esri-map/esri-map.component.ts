@@ -129,7 +129,7 @@ export class EsriMapComponent implements OnInit, OnDestroy {
 
     const locationsLayer = new FeatureLayer({
       url:
-        "https://services.arcgis.com/V6ZHFr6zdgNZuVG0/arcgis/rest/services/USA_Zip_Codes/FeatureServer/0"
+        "https://services9.arcgis.com/5JLHCUOlymM54r78/arcgis/rest/services/star_trek_locations/FeatureServer/0"
     });
     map.layers.add(locationsLayer);
 
