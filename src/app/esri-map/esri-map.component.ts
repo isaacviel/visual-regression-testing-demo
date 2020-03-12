@@ -78,7 +78,7 @@ export class EsriMapComponent implements OnInit, OnDestroy {
   constructor() {}
 
   async initializeMap() {
-    const DEFAULT_WORKER_URL = "https://js.arcgis.com/4.12/";
+    const DEFAULT_WORKER_URL = "https://js.arcgis.com/4.14/";
     const DEFAULT_LOADER_URL = `${DEFAULT_WORKER_URL}dojo/dojo-lite.js`;
 
     esriConfig.workers.loaderUrl = DEFAULT_LOADER_URL;
@@ -127,9 +127,20 @@ export class EsriMapComponent implements OnInit, OnDestroy {
 
     const map = new Map(mapProperties);
 
+    const tosMarker = {
+      type: "simple",
+      symbol: {
+        type: "picture-marker",
+        url: "/assets/img/tos.png",
+        width: "32px",
+        height: "32px"
+      }
+    };
+
     const locationsLayer = new FeatureLayer({
       url:
-        "https://services.arcgis.com/V6ZHFr6zdgNZuVG0/arcgis/rest/services/USA_Zip_Codes/FeatureServer/0"
+        "https://services9.arcgis.com/5JLHCUOlymM54r78/arcgis/rest/services/star_trek_locations/FeatureServer/0",
+      renderer: tosMarker
     });
     map.layers.add(locationsLayer);
 

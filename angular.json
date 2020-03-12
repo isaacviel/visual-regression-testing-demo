@@ -65,7 +65,6 @@
           "builder": "@angular-builders/custom-webpack:dev-server",
           "options": {
             "browserTarget": "vrt-demo:build",
-            "host": "local.arcgis.com",
             "disableHostCheck": true
           },
           "configurations": {
