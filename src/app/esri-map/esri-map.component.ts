@@ -127,7 +127,7 @@ export class EsriMapComponent implements OnInit, OnDestroy {
 
     const map = new Map(mapProperties);
 
-    const tosMarker = {
+    const tosMarker: any = {
       type: "simple",
       symbol: {
         type: "picture-marker",
