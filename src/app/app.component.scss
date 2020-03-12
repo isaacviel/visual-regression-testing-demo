@@ -24,6 +24,34 @@ section {
   }
 }
 
+header {
+  grid-column: span 2;
+
+  position: sticky;
+  top: 0;
+  z-index: 2;
+
+  padding: 1rem 2rem;
+
+  background-color: rgba(0, 0, 0, 0.88);
+
+  border-bottom: 1px solid #eaeaea;
+
+  h1 {
+    display: block;
+
+    padding-left: 32px;
+
+    background-image: url("/assets/img/klingon.png");
+    background-size: 32px;
+    background-repeat: no-repeat;
+    background-position: 8px center;
+
+    font-size: 1.66rem;
+    text-align: center;
+  }
+}
+
 figure {
   display: grid;
   grid-template-columns: repeat(2, minmax(125px, 1fr));
