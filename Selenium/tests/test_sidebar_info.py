@@ -18,7 +18,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 class Test(TestCase):
 
     def setUp(self):
-
+    
         # Browser capabilities 
         caps = {
             'browserName': 'chrome'
@@ -48,34 +48,25 @@ class Test(TestCase):
         # Navigate browser to home page
         driver.get('http://host.docker.internal:4200')
 
-        map_center = WebDriverWait(driver, 90).until(
-            EC.presence_of_element_located((By.CSS_SELECTOR, 'app-esri-map')))
-        map_center_val = map_center.get_attribute("ng-reflect-center")
+        # Original series info windows
+        tos_info = WebDriverWait(driver, 90).until(
+            EC.visibility_of_all_elements_located((By.CSS_SELECTOR, '.series-tos')))
 
-        # Check that map is centered where expected
+        # Check that there are the correct number of info windows for The Original Series
         try:
-            self.assertEqual(map_center_val, '-118.3862,34.1423')
+            self.assertEqual(len(tos_info), 7)
         except AssertionError as e:
             self.verificationErrors.append('Test 1 failed: Map center not expected ' + str(e))
 
-        map_zoom = WebDriverWait(driver, 90).until(
-            EC.presence_of_element_located((By.CSS_SELECTOR, 'app-esri-map')))
-        map_zoom_val = map_zoom.get_attribute("ng-reflect-zoom")
+        # The Next Generation info windows
+        tng_info = WebDriverWait(driver, 90).until(
+            EC.visibility_of_all_elements_located((By.CSS_SELECTOR, '.series-tng')))
 
-        # Check that map zoom level is as expected
+        # Check that there are the correct number of info windows for The Next Generation
         try:
-            self.assertEqual(map_zoom_val, '9')
+            self.assertEqual(len(tng_info), 3)
         except AssertionError as e:
-            self.verificationErrors.append('Test 2 failed: Map zoom not correct ' + str(e))
-
-        map_attribution = WebDriverWait(driver, 90).until(
-            EC.visibility_of_element_located((By.CSS_SELECTOR, '.esri-attribution__sources.esri-interactive')))
-
-        # Check that map attribution is correct
-        try:
-            self.assertEqual(map_attribution.text, 'County of Los Angeles, Esri, HERE, Garmin, SafeGraph, FAO, METI/NASA, USGS, Bureau of Land Management, EPA, NPS')
-        except AssertionError as e:
-            self.verificationErrors.append('Test 3 failed: Map attribution is not corrrect ' + str(e))
+            self.verificationErrors.append('Test 1 failed: Map center not expected ' + str(e))
 
     def tearDown(self):
         # Quit driver

@@ -236,7 +236,7 @@ function getScreenShots(
   // gets the base environment and page
   driver.get(baseEnvironment + pageURL);
 
-  driver.sleep(5000);
+  driver.sleep(8000);
 
   // use in-browser javascript to determine the full height (in pixels) of the page
   const windowSize = () => {
@@ -256,7 +256,7 @@ function getScreenShots(
       return driver.get(testEnvironment + pageURL);
     })
     .then(function() {
-      driver.sleep(5000);
+      driver.sleep(8000);
       return driver.takeScreenshot();
     })
     .then(image => {
