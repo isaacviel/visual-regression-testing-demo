@@ -1,16 +1,9 @@
 #!/usr/bin/python3
 
-import os
-from logging import basicConfig, log
-from random import choice
-from string import ascii_letters, digits
-from sys import version
 from unittest import TestCase, main
-import time
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 
@@ -19,7 +12,7 @@ class Test(TestCase):
 
     def setUp(self):
 
-        # Browser capabilities 
+        # Browser capabilities
         caps = {
             'browserName': 'chrome'
         }
@@ -27,10 +20,10 @@ class Test(TestCase):
         self.driver = webdriver.Remote(
             # local grid
             command_executor='http://localhost:4444/wd/hub',
-            
+
             # hosted grid
             # command_executor='http://dev0011821.esri.com:4444/wd/hub',
-            
+
             desired_capabilities=caps
         )
 
@@ -41,7 +34,7 @@ class Test(TestCase):
         self.verificationErrors = []
 
     def test_map_attributes(self):
-    
+
         driver = self.driver
         driver.set_window_size(1366, 900)
 
@@ -56,7 +49,8 @@ class Test(TestCase):
         try:
             self.assertEqual(map_center_val, '-118.3862,34.1423')
         except AssertionError as e:
-            self.verificationErrors.append('Test 1 failed: Map center not expected ' + str(e))
+            self.verificationErrors.append(
+                'Test 1 failed: Map center not expected ' + str(e))
 
         map_zoom = WebDriverWait(driver, 90).until(
             EC.presence_of_element_located((By.CSS_SELECTOR, 'app-esri-map')))
@@ -66,16 +60,19 @@ class Test(TestCase):
         try:
             self.assertEqual(map_zoom_val, '9')
         except AssertionError as e:
-            self.verificationErrors.append('Test 2 failed: Map zoom not correct ' + str(e))
+            self.verificationErrors.append(
+                'Test 2 failed: Map zoom not correct ' + str(e))
 
         map_attribution = WebDriverWait(driver, 90).until(
             EC.visibility_of_element_located((By.CSS_SELECTOR, '.esri-attribution__sources.esri-interactive')))
 
         # Check that map attribution is correct
         try:
-            self.assertEqual(map_attribution.text, 'County of Los Angeles, Esri, HERE, Garmin, SafeGraph, FAO, METI/NASA, USGS, Bureau of Land Management, EPA, NPS')
+            self.assertEqual(
+                map_attribution.text, 'County of Los Angeles, Esri, HERE, Garmin, SafeGraph, FAO, METI/NASA, USGS, Bureau of Land Management, EPA, NPS')
         except AssertionError as e:
-            self.verificationErrors.append('Test 3 failed: Map attribution is not corrrect ' + str(e))
+            self.verificationErrors.append(
+                'Test 3 failed: Map attribution is not corrrect ' + str(e))
 
     def tearDown(self):
         # Quit driver

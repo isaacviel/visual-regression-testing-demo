@@ -1,16 +1,9 @@
 #!/usr/bin/python3
 
-import os
-from logging import basicConfig, log
-from random import choice
-from string import ascii_letters, digits
-from sys import version
 from unittest import TestCase, main
-import time
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 
@@ -18,8 +11,8 @@ from selenium.webdriver.support.ui import WebDriverWait
 class Test(TestCase):
 
     def setUp(self):
-    
-        # Browser capabilities 
+
+        # Browser capabilities
         caps = {
             'browserName': 'chrome'
         }
@@ -27,10 +20,10 @@ class Test(TestCase):
         self.driver = webdriver.Remote(
             # local grid
             command_executor='http://localhost:4444/wd/hub',
-            
+
             # hosted grid
             # command_executor='http://dev0011821.esri.com:4444/wd/hub',
-            
+
             desired_capabilities=caps
         )
 
@@ -41,7 +34,7 @@ class Test(TestCase):
         self.verificationErrors = []
 
     def test_map_attributes(self):
-    
+
         driver = self.driver
         driver.set_window_size(1366, 900)
 
@@ -56,7 +49,8 @@ class Test(TestCase):
         try:
             self.assertEqual(len(tos_info), 7)
         except AssertionError as e:
-            self.verificationErrors.append('Test 1 failed: Incorrect number of TOS' + str(e))
+            self.verificationErrors.append(
+                'Test 1 failed: Incorrect number of TOS' + str(e))
 
         # The Next Generation info windows
         tng_info = WebDriverWait(driver, 90).until(
@@ -66,7 +60,8 @@ class Test(TestCase):
         try:
             self.assertEqual(len(tng_info), 3)
         except AssertionError as e:
-            self.verificationErrors.append('Test 1 failed: Incorrect number of TNG ' + str(e))
+            self.verificationErrors.append(
+                'Test 1 failed: Incorrect number of TNG ' + str(e))
 
     def tearDown(self):
         # Quit driver
