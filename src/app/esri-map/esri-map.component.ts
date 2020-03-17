@@ -131,7 +131,7 @@ export class EsriMapComponent implements OnInit, OnDestroy {
       type: "simple",
       symbol: {
         type: "picture-marker",
-        url: "/assets/img/tos.png",
+        url: "/assets/img/klingon.png",
         width: "32px",
         height: "32px"
       }
