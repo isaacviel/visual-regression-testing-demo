@@ -273,7 +273,7 @@ function getScreenShots(
 // genDiffImage function to generate an new diff image
 async function diff(baseImgName, testImgName, pageName) {
 
-  looksSame(baseImgName, testImgName, { tolerance: 1 }, function(
+  looksSame(baseImgName, testImgName, { tolerance: 2.3, ignoreAntialiasing: true, antialiasingTolerance: 3}, function(
     error,
     results
   ) {

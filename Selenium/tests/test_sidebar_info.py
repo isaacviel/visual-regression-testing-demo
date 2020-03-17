@@ -58,7 +58,7 @@ class Test(TestCase):
 
         # Check that there are the correct number of info windows for The Next Generation
         try:
-            self.assertEqual(len(tng_info), 3)
+            self.assertEqual(len(tng_info), 4)
         except AssertionError as e:
             self.verificationErrors.append(
                 'Test 1 failed: Incorrect number of TNG ' + str(e))
