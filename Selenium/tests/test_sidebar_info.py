@@ -56,7 +56,7 @@ class Test(TestCase):
         try:
             self.assertEqual(len(tos_info), 7)
         except AssertionError as e:
-            self.verificationErrors.append('Test 1 failed: Map center not expected ' + str(e))
+            self.verificationErrors.append('Test 1 failed: Incorrect number of TOS' + str(e))
 
         # The Next Generation info windows
         tng_info = WebDriverWait(driver, 90).until(
@@ -66,7 +66,7 @@ class Test(TestCase):
         try:
             self.assertEqual(len(tng_info), 3)
         except AssertionError as e:
-            self.verificationErrors.append('Test 1 failed: Map center not expected ' + str(e))
+            self.verificationErrors.append('Test 1 failed: Incorrect number of TNG ' + str(e))
 
     def tearDown(self):
         # Quit driver
